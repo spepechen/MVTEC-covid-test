@@ -27,6 +27,18 @@ library(tidyverse)
   dd$date <- as.Date(dd$date, format='%Y-%m-%d')
   class(dd$date)
   
+      # Column `test_units` ----
+      test_units <- levels(factor(dd$tests_units))
+          # [1] ""                                "people tested"                  
+          # [3] "people tested (incl. non-PCR)"   "samples tested"                 
+          # [5] "tests performed"                 "tests performed (incl. non-PCR)"
+          # [7] "units unclear"      
+      
+      # recoding levels in `test_units`
+      newvalues <- c("unknown_data", "people_PCR", "people_All", "samples", "performed_PCR", "performed_All","unclear")
+      test_units <- newvalues[match(test_units,levels(factor(dd$tests_units)))]
+      # TODO: data in dataset is not changed
+  
   # COUNTRY DATA -------------------------------------- 
   ddExtra <- readxl::read_xlsx("./data/InfoPaisosExtra.xlsx", na = "NA")
   dim(ddExtra)
@@ -51,7 +63,7 @@ library(tidyverse)
       # recoding levels in Government_type
       newvalues <- c("AbsMonar", "Communist", "ConstMonar", "Dictatorship", "Transition", "IslParRep","IslPreRep","IslSemPreRep","ParRep","PreLimDemo","PreRep","SemPreRep")
       GovType <- newvalues[match(GovType,levels(GovType))]
-
+      # TODO: data in dataset is not changed
 
 # GROUP BY MONTH | LOCATION  -----------------------------------  
   ddmonthly <- dd %>%
@@ -97,6 +109,7 @@ library(tidyverse)
     .[-1,] %>% # delete first row
     as.data.frame() 
   colnames(t_ddlocation) <- t(ddlocation[,1]) # countries as columns
+  view(t_ddlocation)
   visdat::vis_miss(t_ddlocation[,1:108]) # first half
   visdat::vis_miss(t_ddlocation[,109:216]) # second half
     
