@@ -233,7 +233,7 @@ library(tidyverse)
       left_join(ddExtra, by = c("location" = "COUNTRY")) %>%
       write.csv('./output/merged_data.csv')
     
-    
+    save(merged_dataset, file="output/merged_data.RData")
     
     
     
