@@ -1,0 +1,218 @@
+"","COUNTRY","iso_code","Continent","Country_Clasification","Government_Type","Corruption_preception","Development_Status","Land_Conditions","GDP_per_unit_of_energy_use_constant","Population_total","Urban_population_PC_of_total_population"
+"1","Afghanistan","AFG","Asia","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,33370794,24.587
+"2","Albania","ALB","Europe","NC","Parlamentary republic","Highly corrupt","Transition economies","Sea Access",13.2363361,2889104,56.423
+"3","Algeria","DZA","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",10.21273579,38923687,70.221
+"4","American Samoa","ASM","Oceania","OECD","Presidential republic","Less corrupt","Developing economies","Sea Access",NA,55791,87.288
+"5","Andorra","AND","Europe","NC","Constitutional monarchy","NI","Developed economies","Landlocked",NA,79213,88.441
+"6","Angola","AGO","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",12.50998069,26941779,62.731
+"7","Antigua and Barbuda","ATG","America","NC","Constitutional monarchy","NI","Developing economies","Islands",NA,92562,25.175
+"8","Argentina","ARG","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",9.327942057,42669500,91.377
+"9","Armenia","ARM","Asia","NC","Presidential republic","Highly corrupt","Transition economies","Landlocked",7.829626859,2912403,63.112
+"10","Aruba","ABW","America","OECD","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,103774,43.041
+"11","Australia","AUS","Oceania","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",8.182513177,23475686,85.602
+"12","Austria","AUT","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Landlocked",11.75738453,8546356,57.526
+"13","Azerbaijan","AZE","Asia","NC","Semipresidential republic","Highly corrupt","Transition economies","Landlocked",11.22016738,9535079,54.422
+"14","Bahamas, The","BHS","America","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,370633,82.668
+"15","Bahrain","BHR","Asia","NC","Constitutional monarchy","Highly corrupt","Developing economies","Islands",4.137815339,1336075,88.915
+"16","Bangladesh","BGD","Asia","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",13.37876063,154520167,33.535
+"17","Barbados","BRB","America","NC","Constitutional monarchy","Less corrupt","Developing economies","Islands",NA,284825,31.328
+"18","Belarus","BLR","Europe","NC","Presidential republic","Highly corrupt","Transition economies","Landlocked",6.123687527,9474511,76.693
+"19","Belgium","BEL","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",8.803152074,11209057,97.833
+"20","Belize","BLZ","America","NC","Constitutional monarchy","NI","Developing economies","Sea Access",NA,353366,45.335
+"21","Benin","BEN","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",4.801097938,10286842,45.166
+"22","Bermuda","BMU","America","NC","Presidential republic","NI","Developed economies","Sea Access",NA,65139,100
+"23","Bhutan","BTN","Asia","NC","Constitutional monarchy","Less corrupt","Developing economies","Landlocked",NA,719056,37.918
+"24","Bolivia","BOL","America","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",8.018245733,10706517,68.047
+"25","Bosnia and Herzegovina","BIH","Europe","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",4.799202951,3482104,46.84
+"26","Botswana","BWA","Africa","NC","Parlamentary republic","Less corrupt","Developing economies","Landlocked",12.43640101,2088614,66.368
+"27","Brazil","BRA","America","BRICS","Presidential republic","Highly corrupt","Developing economies","Sea Access",10.35134832,202763735,85.492
+"28","British Virgin Islands","VGB","America","OECD","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,28989,46.216
+"29","Brunei Darussalam","BRN","Asia","NC","Absolut monarchy","Less corrupt","Developing economies","Sea Access",8.8144597,409769,76.332
+"30","Bulgaria","BGR","Europe","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",6.588623049,7223938,73.651
+"31","Burkina Faso","BFA","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Landlocked",NA,17586017,26.934
+"32","Burundi","BDI","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,9844297,11.776
+"33","Cabo Verde","CPV","Africa","NC","Semipresidential republic","Less corrupt","Developing economies","Sea Access",NA,518269,63.81
+"34","Cambodia","KHM","Asia","NC","Constitutional monarchy","Highly corrupt","Developing economies","Sea Access",7.4934567,15274503,21.799
+"35","Cameroon","CMR","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",9.349840713,22681858,53.976
+"36","Canada","CAN","America","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",5.463454706,35437435,81.218
+"37","Cayman Islands","CYM","America","OECD","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,60848,100
+"38","Central African Republic","CAF","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,4464175,39.959
+"39","Chad","TCD","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,13663559,22.372
+"40","Channel Islands","GB-CHA","Europe","OECD","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,164100,30.995
+"41","Chile","CHL","America","OECD","Presidential republic","Less corrupt","Developing economies","Sea Access",10.82860679,17758959,87.303
+"42","China","CHN","Asia","BRICS","Communist state","Less corrupt","Developing economies","Sea Access",5.689148724,1364270000,54.259
+"43","Colombia","COL","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",17.79939332,46969209,79.415
+"44","Comoros","COM","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Islands",NA,759390,28.338
+"45","Congo, Dem. Rep.","COD","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",2.015947343,73767447,42.18
+"46","Congo, Rep.","COG","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",10.26455682,4736974,65.085
+"47","Costa Rica","CRI","America","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",13.93834003,4795396,75.941
+"48","Cote d'Ivoire","CIV","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",4.960244293,22647683,49.014
+"49","Croatia","HRV","Europe","NC","Parlamentary republic","Highly corrupt","Developed economies","Sea Access",10.72160493,4238389,55.923
+"50","Cuba","CUB","America","NC","Communist state","Highly corrupt","Developing economies","Islands",NA,11306902,76.861
+"51","Curacao","CUW","America","OECD","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",2.090188434,155909,89.443
+"52","Cyprus","CYP","Europe","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",12.72173833,1152285,67.031
+"53","Czech Republic","CZE","Europe","OECD","Parlamentary republic","Less corrupt","Developing economies","Landlocked",7.437745036,10525347,73.384
+"54","Denmark","DNK","Europe","OECD","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",15.68526713,5643475,87.41
+"55","Djibouti","DJI","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,898696,77.314
+"56","Dominica","DMA","America","NC","Parlamentary republic","Less corrupt","Developing economies","Islands",NA,71085,69.28
+"57","Dominican Republic","DOM","America","NC","Presidential republic","Highly corrupt","Developing economies","Islands",17.14871539,10165178,77.67
+"58","Ecuador","ECU","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",12.22558896,15951838,63.261
+"59","Egypt, Arab Rep.","EGY","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",12.12388689,90424654,42.839
+"60","El Salvador","SLV","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",10.60256587,6295128,68.874
+"61","Equatorial Guinea","GNQ","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,1122276,70.083
+"62","Eritrea","ERI","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,NA,NA
+"63","Estonia","EST","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",5.863951462,1314545,68.269
+"64","Eswatini","SWZ","Africa","NC","Absolut monarchy","NI","Developing economies","Sea Access",NA,1095021,23.149
+"65","Ethiopia","ETH","Africa","NC","Parlamentary republic","Highly corrupt","Developing economies","Landlocked",2.867321091,98094253,18.998
+"66","Faroe Islands","FRO","Europe","NC","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",NA,47960,41.501
+"67","Fiji","FJI","Oceania","NC","Parlamentary republic","NI","Developing economies","Islands",NA,866453,54.216
+"68","Finland","FIN","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",6.325252825,5461512,85.175
+"69","France","FRA","Europe","OECD","Semipresidential republic","Less corrupt","Developed economies","Sea Access",10.26979926,66316100,79.394
+"70","French Polynesia","PYF","Asia","OECD","Semipresidential republic","Less corrupt","Developing economies","Sea Access",NA,271705,61.633
+"71","Gabon","GAB","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",6.163934779,1883800,87.651
+"72","Gambia, The","GMB","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,2024042,58.528
+"73","Georgia","GEO","Asia","NC","Semipresidential republic","Less corrupt","Transition economies","Sea Access",7.777176911,3719414,57.067
+"74","Germany","DEU","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",11.50287424,80982500,77.19
+"75","Ghana","GHA","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",11.42546471,27224472,53.419
+"76","Gibraltar","GIB","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",NA,33725,100
+"77","Greece","GRC","Europe","OECD","Parlamentary republic","Highly corrupt","Developed economies","Sea Access",11.33841256,10892413,77.702
+"78","Greenland","GRL","Europe","NC","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",NA,56295,85.813
+"79","Grenada","GRD","America","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,108902,35.938
+"80","Guam","GUM","Oceania","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",NA,161016,94.449
+"81","Guatemala","GTM","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",8.610370383,15923243,49.634
+"82","Guinea","GIN","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,11150977,34.836
+"83","Guinea-Bissau","GNB","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",NA,1692439,41.715
+"84","Guyana","GUY","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,763380,26.414
+"85","Haiti","HTI","America","NC","Semipresidential republic","Highly corrupt","Developing economies","Islands",4.207321395,10549008,51.444
+"86","Honduras","HND","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",6.960965846,8955589,54.514
+"87","Hong Kong SAR, China","HKG","Asia","NC","Presidential limited democracy","Less corrupt","Developed economies","Sea Access",26.79008592,7229500,100
+"88","Hungary","HUN","Europe","OECD","Parlamentary republic","Highly corrupt","Developed economies","Landlocked",10.4647964,9866468,70.227
+"89","Iceland","ISL","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Islands",2.387508447,327386,93.667
+"90","India","IND","Asia","BRICS","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",8.448227005,1295604184,32.384
+"91","Indonesia","IDN","Asia","NC","Presidential republic","Highly corrupt","Developing economies","Islands",11.31685123,255129004,52.635
+"92","Iran, Islamic Rep.","IRN","Asia","NC","Islamic Presidential Republic","Highly corrupt","Developing economies","Sea Access",5.59757043,77465753,72.83
+"93","Iraq","IRQ","Asia","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",10.49764574,34411951,69.758
+"94","Ireland","IRL","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",17.74102039,4657740,62.34
+"95","Isle of Man","IMN","Europe","OECD","Constitutional monarchy","Less corrupt","Developing economies","Islands",NA,83488,52.162
+"96","Israel","ISR","Asia","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",11.54714367,8215700,92.104
+"97","Italy","ITA","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",14.09972569,60789140,69.272
+"98","Jamaica","JAM","America","NC","Constitutional monarchy","Highly corrupt","Developing economies","Islands",8.209153654,2875136,54.584
+"99","Japan","JPN","Asia","OECD","Constitutional monarchy","Less corrupt","Developed economies","Islands",10.75766799,127276000,91.304
+"100","Jordan","JOR","Asia","NC","Constitutional monarchy","Highly corrupt","Developing economies","Sea Access",9.416143103,8920049,90
+"101","Kazakhstan","KAZ","Asia","NC","Presidential republic","Highly corrupt","Transition economies","Landlocked",5.318885454,17288285,57.118
+"102","Kenya","KEN","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",5.362281045,46699981,25.221
+"103","Kiribati","KIR","Oceania","NC","Parlamentary republic","NI","Developing economies","Islands",NA,109391,50.773
+"104","Korea, Dem. People’s Rep.","PRK","Asia","NC","Dictatorship","Highly corrupt","Developing economies","Sea Access",NA,25057752,61.098
+"105","Korea, Rep.","KOR","Asia","OECD","Presidential republic","Less corrupt","Developing economies","Sea Access",6.319520981,50746659,81.707
+"106","Kosovo","XK","Europe","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",7.171862462,1821800,NA
+"107","Kuwait","KWT","Asia","NC","Constitutional monarchy","Highly corrupt","Developing economies","Sea Access",7.908224803,3690942,100
+"108","Kyrgyz Republic","KGZ","Asia","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",4.884525582,5835500,35.635
+"109","Lao PDR","LAO","Asia","NC","Communist state","Highly corrupt","Developing economies","Sea Access",NA,6639756,32.487
+"110","Latvia","LVA","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",10.19910991,1993782,67.952
+"111","Lebanon","LBN","Asia","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",10.32005515,6262410,87.947
+"112","Lesotho","LSO","Africa","NC","Constitutional monarchy","Highly corrupt","Developing economies","Landlocked",NA,2043437,26.502
+"113","Liberia","LBR","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,4359505,49.397
+"114","Libya","LBY","Africa","NC","In Transition (provisional government)","Highly corrupt","Developing economies","Sea Access",5.68440417,6362037,79.009
+"115","Liechtenstein","LIE","Europe","NC","Constitutional monarchy","NI","Developed economies","Landlocked",NA,37223,14.313
+"116","Lithuania","LTU","Europe","OECD","Semipresidential republic","Less corrupt","Developed economies","Sea Access",10.98848099,2932367,67.108
+"117","Luxembourg","LUX","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Landlocked",13.45980917,556319,89.884
+"118","Macao SAR, China","MAC","Asia","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",NA,590208,100
+"119","Madagascar","MDG","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Islands",NA,23589887,34.534
+"120","Malawi","MWI","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,16289540,16.132
+"121","Malaysia","MYS","Asia","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",8.153090867,29866559,73.577
+"122","Maldives","MDV","Asia","NC","Presidential republic","Highly corrupt","Developing economies","Islands",NA,435015,38.106
+"123","Mali","MLI","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Landlocked",NA,16934220,39.196
+"124","Malta","MLT","Europe","NC","Parlamentary republic","Less corrupt","Developed economies","Islands",17.96704348,434558,94.347
+"125","Marshall Islands","MHL","Oceania","NC","Parlamentary republic","NI","Developing economies","Sea Access",NA,57179,75.384
+"126","Mauritania","MRT","Africa","NC","Islamic Semipresidential Republic","Highly corrupt","Developing economies","Sea Access",NA,3930896,50.203
+"127","Mauritius","MUS","Africa","NC","Parlamentary republic","Less corrupt","Developing economies","Islands",16.42568457,1260934,41.111
+"128","Mexico","MEX","America","OECD","Presidential republic","Highly corrupt","Developing economies","Sea Access",10.98026028,120355128,78.993
+"129","Micronesia, Fed. Sts.","FSM","Oceania","NC","Parlamentary republic","NI","Developing economies","Sea Access",NA,107446,22.399
+"130","Moldova","MDA","Europe","NC","Parlamentary republic","Highly corrupt","Developing economies","Landlocked",6.152179727,3556397,42.496
+"131","Monaco","MCO","Europe","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,37322,100
+"132","Mongolia","MNG","Asia","NC","Semipresidential republic","Highly corrupt","Developing economies","Landlocked",6.173650167,2940108,68.163
+"133","Montenegro","MNE","Europe","NC","Parlamentary republic","Highly corrupt","Transition economies","Sea Access",9.619036757,621810,65.471
+"134","Morocco","MAR","Africa","NC","Constitutional monarchy","NI","Developing economies","Sea Access",12.99052363,34192347,60.256
+"135","Mozambique","MOZ","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",2.761574282,26286163,33.878
+"136","Myanmar","MMR","Asia","NC","Parlamentary republic","NI","Developing economies","Sea Access",12.8270944,52280807,29.65
+"137","Namibia","NAM","Africa","NC","Semipresidential republic","Less corrupt","Developing economies","Sea Access",12.62763646,2273430,45.826
+"138","Nauru","NRU","Oceania","NC","Parlamentary republic","NI","Developing economies","Islands",NA,11853,100
+"139","Nepal","NPL","Asia","NC","Parlamentary republic","Highly corrupt","Developing economies","Landlocked",5.490792021,26906926,18.182
+"140","Netherlands","NLD","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",10.68962114,16865008,89.69
+"141","New Caledonia","NCL","Oceania","NC","Semipresidential republic","Less corrupt","Developing economies","Sea Access",NA,268050,68.931
+"142","New Zealand","NZL","Oceania","OECD","Constitutional monarchy","Less corrupt","Developed economies","Islands",7.589666583,4509700,86.281
+"143","Nicaragua","NIC","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",7.85675329,6142733,57.7
+"144","Niger","NER","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Landlocked",6.000358809,19240157,16.219
+"145","Nigeria","NGA","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",7.448079989,176404902,46.982
+"146","North Macedonia","MKD","Europe","NC","Parlamentary republic","Highly corrupt","Transition economies","Sea Access",9.740901155,2077775,57.284
+"147","Northern Mariana Islands","MNP","Oceania","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",NA,55305,91.273
+"148","Norway","NOR","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",11.31739962,5137232,80.692
+"149","Oman","OMN","Asia","NC","Absolut monarchy","Less corrupt","Developing economies","Sea Access",6.572250711,4027260,80.145
+"150","Pakistan","PAK","Asia","NC","Islamic Parlamentary Republic","Highly corrupt","Developing economies","Sea Access",9.446325077,195306825,35.819
+"151","Palau","PLW","Oceania","NC","Presidential republic","NI","Developing economies","Sea Access",NA,17626,77.517
+"152","Panama","PAN","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",18.55011492,3901315,66.371
+"153","Papua New Guinea","PNG","Oceania","NC","Constitutional monarchy","Highly corrupt","Developing economies","Islands",NA,7946731,12.988
+"154","Paraguay","PRY","America","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",13.88203921,6599526,60.474
+"155","Peru","PER","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",15.04322516,30090359,77.173
+"156","Philippines","PHL","Asia","NC","Presidential republic","Highly corrupt","Developing economies","Islands",13.82880609,100513138,46.093
+"157","Poland","POL","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",9.846902035,38011735,60.403
+"158","Portugal","PRT","Europe","OECD","Semipresidential republic","Less corrupt","Developed economies","Sea Access",12.79614618,10401062,62.936
+"159","Puerto Rico","PRI","America","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",NA,3534874,93.651
+"160","Qatar","QAT","Asia","NC","Absolut monarchy","Less corrupt","Developing economies","Sea Access",6.510921526,2459198,98.868
+"161","Romania","ROU","Europe","NC","Semipresidential republic","Highly corrupt","Developed economies","Sea Access",12.44100671,19908979,53.9
+"162","Russian Federation","RUS","Asia","BRICS","Semipresidential republic","Highly corrupt","Transition economies","Sea Access",5.197100349,143819666,73.95
+"163","Rwanda","RWA","Africa","NC","Presidential republic","Less corrupt","Developing economies","Landlocked",NA,11083635,16.967
+"164","Samoa","WSM","Oceania","NC","Parlamentary republic","NI","Developing economies","Islands",NA,192221,19.149
+"165","San Marino","SMR","Europe","NC","Semipresidential republic","NI","Developed economies","Landlocked",NA,32948,96.559
+"166","Sao Tome and Principe","STP","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",NA,195727,69.213
+"167","Saudi Arabia","SAU","Asia","NC","Absolut monarchy","Less corrupt","Developing economies","Sea Access",7.201496629,30916994,82.96
+"168","Senegal","SEN","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",10.39540562,14174731,45.436
+"169","Serbia","SRB","Europe","NC","Parlamentary republic","Highly corrupt","Transition economies","Landlocked",7.542955437,7130576,55.583
+"170","Seychelles","SYC","Africa","NC","Presidential republic","Less corrupt","Developing economies","Islands",NA,91359,54.969
+"171","Sierra Leone","SLE","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,7017144,40.432
+"172","Singapore","SGP","Asia","NC","Parlamentary republic","Less corrupt","Developing economies","Sea Access",16.00321996,5469724,100
+"173","Sint Maarten (Dutch part)","SXM","America","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,37685,100
+"174","Slovak Republic","SVK","Europe","OECD","Parlamentary republic","Less corrupt","Developing economies","Sea Access",9.294178435,5418649,54
+"175","Slovenia","SVN","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Sea Access",8.813505024,2061980,53.557
+"176","Solomon Islands","SLB","Oceania","NC","Constitutional monarchy","Highly corrupt","Developing economies","Islands",NA,587079,21.896
+"177","Somalia","SOM","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,13423576,42.679
+"178","South Africa","ZAF","Africa","BRICS","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",4.596045455,54545991,64.312
+"179","South Sudan","SSD","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",27.39740119,10554883,18.626
+"180","Spain","ESP","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",12.60908102,46480882,79.366
+"181","Sri Lanka","LKA","Asia","NC","Semipresidential republic","Highly corrupt","Developing economies","Islands",20.65290911,20778000,18.218
+"182","St. Kitts and Nevis","KNA","America","NC","Constitutional monarchy","NI","Developing economies","Sea Access",NA,50774,30.885
+"183","St. Lucia","LCA","America","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,178296,18.482
+"184","St. Martin (French part)","MAF","America","NC","Semipresidential republic","Less corrupt","Developing economies","Sea Access",NA,36015,NA
+"185","St. Vincent and the Grenadines","VCT","America","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",NA,108861,50.558
+"186","Sudan","SDN","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",10.54606307,37977655,33.689
+"187","Suriname","SUR","America","NC","Parlamentary republic","Highly corrupt","Developing economies","Sea Access",12.15308483,553273,66.089
+"188","Sweden","SWE","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Sea Access",9.013000672,9696110,86.247
+"189","Switzerland","CHE","Europe","OECD","Parlamentary republic","Less corrupt","Developed economies","Landlocked",18.69908692,8188649,73.696
+"190","Syrian Arab Republic","SYR","Asia","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",NA,18715672,51.5
+"191","Tajikistan","TJK","Asia","NC","Presidential republic","Highly corrupt","Transition economies","Landlocked",7.592265036,8252833,26.655
+"192","Tanzania","TZA","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",4.954448773,49959822,30.904
+"193","Thailand","THA","Asia","NC","Constitutional monarchy","Highly corrupt","Developing economies","Sea Access",7.543130095,68438730,46.943
+"194","Timor-Leste","TLS","Asia","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",NA,1174331,29.133
+"195","Togo","TGO","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",3.078012678,7137997,39.579
+"196","Tonga","TON","Oceania","NC","Constitutional monarchy","NI","Developing economies","Islands",NA,101028,23.328
+"197","Trinidad and Tobago","TTO","America","NC","Parlamentary republic","Highly corrupt","Developing economies","Islands",2.170096055,1362342,53.413
+"198","Tunisia","TUN","Africa","NC","Semipresidential republic","Highly corrupt","Developing economies","Sea Access",11.41049954,11063201,67.772
+"199","Turkey","TUR","Asia","OECD","Presidential republic","Highly corrupt","Developing economies","Sea Access",14.19792318,77231907,73.077
+"200","Turkmenistan","TKM","Asia","NC","Presidential republic","Highly corrupt","Transition economies","Landlocked",2.928865308,5466328,49.921
+"201","Turks and Caicos Islands","TCA","America","NC","Constitutional monarchy","NI","Developing economies","Sea Access",NA,35369,91.851
+"202","Tuvalu","TUV","Oceania","NC","Constitutional monarchy","Highly corrupt","Developing economies","Islands",NA,10972,58.786
+"203","Uganda","UGA","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,36912148,21.504
+"204","Ukraine","UKR","Europe","NC","Semipresidential republic","Highly corrupt","Transition economies","Sea Access",3.354154134,45271947,68.968
+"205","United Arab Emirates","ARE","Asia","NC","Constitutional monarchy","Less corrupt","Developing economies","Sea Access",8.221288632,9214175,85.375
+"206","United Kingdom","GBR","Europe","OECD","Constitutional monarchy","Less corrupt","Developed economies","Islands",13.9344853,64613160,82.365
+"207","United States","USA","America","OECD","Presidential republic","Less corrupt","Developed economies","Sea Access",7.482139348,318386421,81.483
+"208","Uruguay","URY","America","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",14.38579749,3400434,94.945
+"209","Uzbekistan","UZB","Asia","NC","Presidential republic","Highly corrupt","Transition economies","Landlocked",NA,30757700,50.85
+"210","Vanuatu","VUT","Oceania","NC","Parlamentary republic","Highly corrupt","Developing economies","Islands",NA,263888,24.861
+"211","Venezuela, RB","VEN","America","NC","Presidential republic","Highly corrupt","Developing economies","Sea Access",NA,30045134,88.144
+"212","Vietnam","VNM","Asia","NC","Communist state","Highly corrupt","Developing economies","Sea Access",NA,91714595,33.115
+"213","Virgin Islands (U.S.)","VIR","America","NC","Presidential republic","Less corrupt","Developing economies","Sea Access",NA,107884,95.213
+"214","West Bank and Gaza / Palestine","PSE","Asia","NC","Semipresidential republic","NI","Developing economies","Sea Access",NA,4173398,75.113
+"215","Yemen, Rep.","YEM","Asia","NC","In Transition (provisional government)","Highly corrupt","Developing economies","Sea Access",NA,25823485,34.165
+"216","Zambia","ZMB","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,15399753,41.382
+"217","Zimbabwe","ZWE","Africa","NC","Presidential republic","Highly corrupt","Developing economies","Landlocked",NA,13586681,32.504
