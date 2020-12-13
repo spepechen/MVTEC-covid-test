@@ -38,6 +38,8 @@ missing_value_rate_table  <- function(your_dataframe) {
   return(m) 
 }
 
+joined_missing_value <- missing_value_rate_table(joined)
+View(joined_missing_value)
 #write.csv(m,'output/missing_value_rate.csv')
 
 summary(joined$hosp_patients)
@@ -95,6 +97,27 @@ saveWidget(plotly_oecd, file="OECD.html")
 plot_all <- heatmap_maker(location != "1111") #just to include everyone 
 plotly_all <- ggplotly(plot_all, tooltip="text") 
 saveWidget(plotly_all, file="all.html")
+
+
+
+heatmap_maker_data <- function(...){
+  # https://stackoverflow.com/questions/45134317/how-to-filter-a-data-frame-programmatically-with-dplyr-and-tidy-evaluation
+  F <- quos(...) #quos captures ... as a list, without evaluating the arguments.
+  g <- filtered_joined %>% 
+    filter(!!!F) %>%  #!!! splices and unquotes the arguments for evaluation
+    group_by(iso_code, COUNTRY, Continent) %>%
+    group_modify(~tibble(missing_value_rate_table(.))) 
+ 
+  return(g)
+}
+
+
+plot_all_data <- heatmap_maker_data(location != "1111") #just to include everyone 
+View(plot_all_data)
+
+names(plot_all_data) <- tolower(names(plot_all_data))
+
+write.csv(filter(plot_all_data, !is.na(country)) ,'output/for_d3/missing_value_rate_filteredNA.csv')
 
 
 #IGNORE THE REST MESSY CODE 
