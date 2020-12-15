@@ -1,0 +1,151 @@
+/*
+Reference
+- https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html
+- https://stackoverflow.com/questions/54742880/change-font-color-of-the-subtitle-in-ioslides-cover
+*/
+
+/* Logo from Wikipedia: 121 x 30 */
+
+/* Title page image size: c(121, 30) * 2 */
+.gdbar img {
+  width: 242px;
+  height: 60px;
+  margin: 8px 8px;
+}
+
+/* Title page box size: c(121, 30) * 2.4 */
+.gdbar {
+  width: 290px !important;
+  height: 72px !important;
+}
+
+/* Logo in footer: c(121, 30) * 0.8  */
+slides > slide:not(.nobackground):before {
+  width: 96.8px;
+  height: 24px;
+  background-size: 100px 35px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #5f7582;
+}
+
+/* title */
+slides > slide.title-slide hgroup h1 {
+  color: #5f7582;
+  font-size: 60px;
+  letter-spacing: 10;
+}
+
+/* subtitle */
+slides > slide.title-slide hgroup h2 {
+  color: #5f7582;
+  font-size: 30px;
+  letter-spacing: 10;
+}
+
+/* author and date */
+slides > slide.title-slide p {
+  color: #5f7582;
+}
+
+
+/* https://github.com/ramnathv/slidify/issues/309
+Adopting the code to use white background
+There may be better way than this
+*/
+
+/* line 884, ../scss/default.scss */
+aside.gdbar {
+  height: 97px;
+  width: 215px;
+  position: absolute;
+  left: -1px;
+  top: 125px;
+  -webkit-border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 10px 10px 0;
+  -ms-border-radius: 0 10px 10px 0;
+  -o-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
+
+  /* IE10 Consumer Preview */
+  background-image: -ms-linear-gradient(right,  #FFFFF 0%,  #FFFFF 100%);
+
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(right,  #FFFFF 0%,  #FFFFF 100%);
+
+  /* Opera */
+  background-image: -o-linear-gradient(right,  #FFFFF 0%,  #FFFFF 100%);
+
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, right top, left top, color-stop(0,  #FFFFF), color-stop(1,  #FFFFF));
+
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(right, #FFFFFF 0%, #FFFFFF 100%);
+
+  /* W3C Markup, IE10 Release Preview */
+  background-image: linear-gradient(to left,  #FFFFF 0%,  #FFFFF 100%);
+
+  -webkit-background-size: 0% 100%;
+  -moz-background-size: 0% 100%;
+  -o-background-size: 0% 100%;
+  background-size: 0% 100%;
+  -webkit-transition: all 0.5s ease-out 0.5s;
+  -moz-transition: all 0.5s ease-out 0.5s;
+  -ms-transition: all 0.5s ease-out 0.5s;
+  -o-transition: all 0.5s ease-out 0.5s;
+  transition: all 0.5s ease-out 0.5s;
+  /* Better to transition only on background-size, but not sure how to do that with the mixin. */
+}
+
+
+/*
+To change the table header to Aetna color
+Note that the color is set for background, not background-color
+*/
+table.rmdtable th {
+  background: #5f7582;
+  color: white;
+}
+
+/* change the color of title slide made by one # */
+slides > slide.dark {
+    background: #5f7582 !important;
+}
+
+.segue h2 {
+    color: white;
+    font-size: 60px;
+}
+
+/* 
+remove shades 
+https://stackoverflow.com/questions/35632032/configuring-ioslides-background-with-css
+not sure whether this works
+*/
+
+.title-slide {
+ background-color: white; 
+}
+
+slides > slide.backdrop {
+  background: white;
+}
+
+slides > slide.backdrop {
+  background: none !important;
+  background-color: white !important;
+}
+
+.figure {
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+
+table {
+  margin-top: 20px;
+  margin-bottom: 20px !important;
+}
+
