@@ -70,7 +70,10 @@ pca_var <- pca$sdev^2
 pca_var_per <- round(pca_var/sum(pca_var)*100, 1)
 
 # scree plot
+png("output/pca/scree_plot.png")
 barplot(pca_var_per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
+dev.off()
+
 
 pca_data <- data.frame(Variables=rownames(pca$x), 
                        X=pca$x[,1], 
@@ -81,8 +84,14 @@ ggplot(data=pca_data, aes(x=X, y=Y, label=Variables)) +
   xlab(paste("PC1 : ", pca_var_per[1], "%", sep= "")) +
   ylab(paste("PC2 :  ", pca_var_per[2], "%", sep= "")) +
   theme_bw() +
-  ggtitle("PCA Graph of EU")
+  ggtitle("PCA Graph of EU countries")
+ggsave("output/pca/pca_plot.png")
+
 
 
 loading_scores <- pca$rotation[,1]
 variables_scores <- abs(loading_scores)
+variables_scores_ranked <- sort(variables_scores, decreasing = TRUE)
+top_10_var <- names(variables_scores_ranked[1:10])
+
+pca$rotation[top_10_var,1]
