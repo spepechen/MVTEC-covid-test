@@ -1,5 +1,5 @@
 library(tidyverse)
-library(plotly)
+# library(plotly)
 
 # LOAD DATA | DROP NON WANTED DATA---- 
 df0 <-readRDS("output/merged_data.RDS") %>% as.data.frame()  
@@ -19,7 +19,7 @@ demography <- scan(text="population, population_density, median_age, aged_65_old
                     what="character",
                     sep=",",
                     strip.white=T)
-country_categoric <- scan(text="continent, country_class, gov_type, corruption, dev_status, land_conditions",
+country_categorical <- scan(text="continent, country_class, gov_type, corruption, dev_status, land_conditions",
                          what="character",
                          sep=",",
                          strip.white=T)
@@ -32,16 +32,12 @@ tests <- function(x) contains('test')
 totals <- function(x) contains('total')
 hospitals_icu <- function(x) contains('patient')
 
-# EXAMPLE:  
-# df %>% select(location, smoothed(), country_categories) %>% names()
-#     [1] "location"                        "new_cases_smoothed"              "new_deaths_smoothed"            
-#     [4] "new_cases_smoothed_per_million"  "new_deaths_smoothed_per_million" "new_tests_smoothed"             
-#     [7] "population"                      "population_density"              "median_age"                     
-#     [10] "aged_65_older"                   "aged_70_older"                   "gdp_per_capita"                 
-#     [13] "extreme_poverty"                 "cardiovasc_death_rate"           "diabetes_prevalence"            
-#     [16] "female_smokers"                  "male_smokers"                    "handwashing_facilities"         
-#     [19] "life_expectancy"                 "human_development_index"          
-      
+# EXAMPLE USAGE:  
+# df %>% select(location, smoothed(), tests()) %>% names()
+#       [1] "location"                        "new_cases_smoothed"              "new_deaths_smoothed"            
+#       [4] "new_cases_smoothed_per_million"  "new_deaths_smoothed_per_million" "new_tests_smoothed"             
+#       [7] "total_tests"                     "new_tests"                       "tests_per_case"                 
+#       [10] "tests_units"      
 
 
 
@@ -86,6 +82,7 @@ hospitals_icu <- function(x) contains('patient')
         # tests_units
     # Country data
         # continent, country_class, gov_type, corruption, dev_status, land_condition
+
 agg_sum <- scan(text="new_tests, new_cases_smoothed_per_million, new_deaths_smoothed_per_million, new_cases_smoothed, new_deaths_smoothed, new_cases_per_million, new_deaths_per_million,new_cases, new_deaths",
                what="character",
                sep=",",
@@ -99,34 +96,45 @@ agg_mean <- scan(text="population_density, median_age, aged_65_older, aged_70_ol
                 sep=",",
                 strip.white=T)
 
+categ <- scan(text="test_units, continent, country_class, gov_type, corruption, dev_status, land_condition",
+              what="character",
+              sep=",",
+              strip.white=T)
+ 
 # GROUPING DATA  -----------------------------------
 # Monthly          
   dfmonthly <- df %>% 
-            group_by(location,month=lubridate::floor_date(date,"month")) %>% 
-            summarize_if(is.numeric, min)  %>%
-            mutate(month=format(month, "%Y - %m"))
-  
+    group_by(location,month=lubridate::floor_date(date,"month")) %>% 
+    mutate(month=format(month, "%Y - %m")) %>%
+    summarize(
+      across(agg_max, max),
+      across(agg_sum, sum),
+      across(agg_mean, mean))
+    # mutate_if(is.numeric,function(x) coalesce(x,0L)) %>%
+                
   dfweekly <- df %>% as.data.frame() %>%
     group_by(location,week=lubridate::floor_date(date,"week")) %>% 
+  #  mutate(year_week=format("week", "%b %d"))  %>%
     select(-date) %>% 
-    summarize_if(is.numeric, min) %>%
-    mutate(year_week=format("week", "%b %d"))
-    
-  dflocation <- df %>%
-    group_by(location) %>% 
     summarize(
-      across(!!!agg_mean,  mean) )  
-      across(contains("new") | contains('population'), ~ sum(.x,na.rm=T))  %>%
-               
-    mutate_if(is.numeric,function(x) coalesce(x,0L))
-  
-summarise(
-  across(c(Sepal.Width:Petal.Width), ~ mean(.x, na.rm = TRUE), .names = "mean_{col}"),
-  across(c(Sepal.Length), ~ max(.x, na.rm = TRUE), .names = "max_{col}")
-)
+      across(agg_max, max),
+      across(agg_sum, sum),
+      across(agg_mean, mean))
+    # mutate_if(is.numeric,function(x) coalesce(x,0L)) %>%
+    
+  dflocation_permillion_totals <- df %>%
+    group_by(iso_code, location) %>%
+    summarize(
+      across(agg_max, max),
+      across(agg_sum, sum),
+      across(agg_mean, mean)) %>%
+    select(iso_code,location,per_million() & !starts_with("new"))
+      # mutate_if(is.numeric,function(x) coalesce(x,0L)) %>%
+
+      # across(contains("new") | contains('population'), ~ sum(.x,na.rm=T))  %>%
 
   
-  # Transpose data by location
+    # Transpose data by location
   t_dflocation <- t(dflocation) %>% .[-1,] # delete first row
   colnames(t_dflocation) <- t(dflocation[,1]) # countries as columns
   
@@ -160,7 +168,7 @@ summarise(
   na_matrix <- summary(VIM::aggr(dfweekly,cex.axis=.6, oma = c(13,0,3,0)))$combinations
   
 # pivot weeks on countries  -----------------------------------
-  weekly_nwdeaths_sm <- dfweekly %>%  filter(week > "2020-04-15") %>%
+  weekly_nwdeaths_sm <- dfweekly %>%
     pivot_wider(id_cols=c('location','new_deaths_smoothed'),
                 names_from='year_week',
                 values_from='new_deaths_smoothed',

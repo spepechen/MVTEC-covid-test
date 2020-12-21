@@ -1,0 +1,32 @@
+{
+    "id": "BEF67549",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1607689736695.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "eu",
+        "caption": "eu",
+        "totalObservations": 0,
+        "displayedObservations": 0,
+        "variables": 60,
+        "cacheKey": "FCD80366",
+        "object": "eu",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=eu&cache_key=FCD80366&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 4382656294,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1607689736695,
+    "read_only": false,
+    "read_only_alternatives": []
+}
