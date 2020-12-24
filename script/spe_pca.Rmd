@@ -1,12 +1,13 @@
-#' # Principle components analysis
-#' [knitr::spin ref](https://github.com/yihui/knitr/blob/master/inst/examples/knitr-spin.R)
-#' 
-#' `knitr::spin('/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/script/spe_pca_test.R', precious = TRUE)`
+# Principle components analysis
+[knitr::spin ref](https://github.com/yihui/knitr/blob/master/inst/examples/knitr-spin.R)
 
-#+ setup, include=FALSE
+`knitr::spin('/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/script/spe_pca_test.R', precious = TRUE)`
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
 
-#+ message=FALSE
+```
+```{r message=FALSE}
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
@@ -15,16 +16,17 @@ library(FactoMineR)
 library(DMwR)
 
 load(file="/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/output/joined_data_by_isocode.RData")
+```
 
+PCA for continuous variables
+* weekly newcases
+* new_cases_smoothed_per_million
+* new_deaths_smoothed_per_million
+* hospital_beds_per_thousand 
 
-#' PCA for continuous variables
-#' * weekly newcases
-#' * new_cases_smoothed_per_million
-#' * new_deaths_smoothed_per_million
-#' * hospital_beds_per_thousand 
-#' 
-#' ## Preprocessing
+## Preprocessing
 
+```{r }
 selected_eu <- c("France", "Portugal", "Italy", "Germany", "Finland", "Denmark", "Norway", "Netherlands", "Spain", "United Kingdom") 
 
 df <- joined %>%
@@ -52,9 +54,11 @@ df <- joined %>%
             stringency_index = max(stringency_index)) %>%
   mutate(location_mo = paste(location, month, sep = '_')) %>%
   tibble::column_to_rownames('location_mo')
+```
 
-#' ### Missing value imputation with KNN methods
-#+ test-a, cache=FALSE
+### Missing value imputation with KNN methods
+
+```{r test-a, cache=FALSE}
 exclude_chr <- df[ , names(df) != "location"]
 knn_output <- knnImputation(exclude_chr, k = 10, scale = T, meth = "weighAvg",
                             distData = NULL)
@@ -68,14 +72,17 @@ oct_df <- knn_output %>%
   tibble::column_to_rownames('location')
 
 oct_df <- data.matrix(oct_df)
+```
 
-#' ## PCA starts here 
-#' http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/
+## PCA starts here 
+http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/
 
+```{r }
 pca <- prcomp((oct_df), scale=TRUE)
 fviz_eig(pca)
 
-#+ chart1
+```
+```{r chart1}
 fviz_pca_ind(pca,
              col.ind = "cos2", # Color by the quality of representation
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
@@ -83,14 +90,16 @@ fviz_pca_ind(pca,
 )
 
 
-#+ chart2
+```
+```{r chart2}
 fviz_pca_var(pca,
              col.var = "contrib", # Color by contributions to the PC
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE     # Avoid text overlapping
 )
 
-#+ chart3, fig.width=10, fig.height=10
+```
+```{r chart3, fig.width=10, fig.height=10}
 fviz_pca_biplot(pca, repel = TRUE,
                 col.var = "#2E9FDF", # Variables color
                 col.ind = "#696969"  # Individuals color
@@ -99,6 +108,5 @@ fviz_pca_biplot(pca, repel = TRUE,
 f.pca <- PCA(oct_df, ncp = 7, graph = FALSE)
 
 summary(f.pca)
-
-
+```
 
