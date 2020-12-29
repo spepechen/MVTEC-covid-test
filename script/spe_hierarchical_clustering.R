@@ -62,7 +62,7 @@ abline(h =0.4, col = 'yellow')
 #dealing with labels
 # with hardcoded chr labels but can't add rect
 dend <- dendextend::color_branches(as.dendrogram(hclust_avg), k = 3)
-dendextend::labels(dend) <- c("France", "Portugal", "Italy", "Germany", "Findland", "Denmark", "Norway", "Netherlands", "Spain", "United Kingdom") 
+dendextend::labels(dend) <- c("France", "Portugal", "Italy", "Germany", "Finland", "Denmark", "Norway", "Netherlands", "Spain", "United Kingdom") 
 plot(dend)
 
 # more on dendextend pkg 
