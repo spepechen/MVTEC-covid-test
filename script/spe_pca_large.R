@@ -25,11 +25,11 @@ load(file="/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/output/joined_
 #' 
 #' ## Preprocessing
 
-selected_eu <- c("France", "Portugal", "Italy", "Germany", "Finland", "Denmark", "Norway", "Netherlands", "Spain", "United Kingdom") 
+#selected_eu <- c("France", "Portugal", "Italy", "Germany", "Finland", "Denmark", "Norway", "Netherlands", "Spain", "United Kingdom") 
 
 df <- joined %>%
   # filter(location %in% selected_eu) %>%
-  filter(Continent == 'Europe') %>%
+  # filter(Continent == 'Europe') %>%
   select(iso_code, 
          location,
          date, 
@@ -77,17 +77,17 @@ fviz_eig(pca)
 
 
 #' ### Scree plot to identify the most prolific components
-#' Sum of PC1 and PC2 is 78.2% meaning these two components can explain majority of the variance in the data set, so ok to retain only two.  
+#' Sum of PC1 and PC2 is 76.4% meaning these two components can explain majority of the variance in the data set, so ok to retain only two.  
 
 #+ scree-plot
 # https://stackoverflow.com/questions/62117449/is-there-a-way-to-add-a-cum-sum-to-a-fviz-eig-plot
 fviz_eig(pca,
-          addlabels = T, 
-          barcolor = "#E7B800", 
-          barfill = "#E7B800", 
-          linecolor = "#00AFBB", 
-          choice = "variance", 
-          ylim=c(0,70))
+         addlabels = T, 
+         barcolor = "#E7B800", 
+         barfill = "#E7B800", 
+         linecolor = "#00AFBB", 
+         choice = "variance", 
+         ylim=c(0,60))
 
 
 #+ score-plot
@@ -100,18 +100,11 @@ fviz_pca_ind(pca,
 #' ### Loading plot/ Correlation circle: identify the most influential variables
 #' Variables projected onto PC1 and PC2 and show how strongly each characteristic influences a principal component.
 #' 
-#' total_cases_per_million and sum_new_cases_smoothed_per_million have more say on PC1.
-#' hospital_beds_per_thousand has strong influence on PC2 
+#' sum_new_deaths_smoothed_per_million have more say on PC1.
+#' hospital_beds_per_thousand and stringency_index have strong influence on PC2 
 #' 
 #' total_death_million is perpendicular to PC2 meaning it has close to zero influence on it.
-#' hospital_beds_per_thousand and stringency_index diverge from each other and form near 180 degree. They are negative correlated.  
-
-
-var <- get_pca_var(pca)
-# plot by coord
-var$coord
-# color by contribution
-var$contrib
+#' hospital_beds_per_thousand and stringency_index diverge from each other and form a largest angle (> 120 degree) They are negative correlated.  
 
 #+ chart2
 fviz_pca_var(pca,
@@ -120,6 +113,7 @@ fviz_pca_var(pca,
              repel = TRUE     # Avoid text overlapping
 )
 
+#' not sure how to read biplot
 
 #+ chart3, fig.width=10, fig.height=10
 fviz_pca_biplot(pca, repel = TRUE,
@@ -131,5 +125,9 @@ f.pca <- PCA(oct_df, ncp = 7, graph = FALSE)
 
 summary(f.pca)
 
-
+var <- get_pca_var(pca)
+# plot by coord
+var$coord
+# color by contribution
+var$contrib
 
