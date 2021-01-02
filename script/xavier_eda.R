@@ -105,7 +105,7 @@ categ <- scan(text="test_units, continent, country_class, gov_type, corruption, 
 # Monthly          
   dfmonthly <- df %>% 
     group_by(location,month=lubridate::floor_date(date,"month")) %>% 
-    mutate(month=format(month, "%Y - %m")) %>%
+    mutate(month=format(month, "%Y - %b")) %>%
     summarize(
       across(agg_max, max),
       across(agg_sum, sum),
@@ -129,7 +129,7 @@ categ <- scan(text="test_units, continent, country_class, gov_type, corruption, 
       across(agg_sum, sum),
       across(agg_mean, mean)) %>%
     select(iso_code,location,per_million() & !starts_with("new"))
-      # mutate_if(is.numeric,function(x) coalesce(x,0L)) %>%
+       mutate_if(is.numeric,function(x) coalesce(x,0L)) 
 
       # across(contains("new") | contains('population'), ~ sum(.x,na.rm=T))  %>%
 
@@ -175,31 +175,40 @@ categ <- scan(text="test_units, continent, country_class, gov_type, corruption, 
                 values_fill=0)
   
   dflocation  %>% arrange(desc(total_deaths_per_million)) %>% slice_head(n = 50)
-    ggplot(aes(x=new_deaths_smoothed)) + geom_histogram(binwidth=.5, colour="black", fill="white") + 
-    facet_grid(location ~ .) +
-               linetype="dashed", size=1, colour="red")
-    geom_vline(data=cdat, aes(xintercept=rating.mean),
 
                
                
-# Grouping by dates: ----
+# Misc: ----
+  library(gapminder)
+  gap_with_colors <-
+    data.frame(df,
+               cc = I(country_colors[match(df$location,
+                                           names(country_colors))]))
+  
+  # bubble plot, focus just on Africa and Europe in 2007
+  keepers <- with(gap_with_colors,
+                  continent %in% c("Africa", "Europe") & date == '2020-10-01')
+  plot(life_expectancy ~ total_deaths_per_million, gap_with_colors,
+       subset = keepers, log = "x", pch = 21,
+       cex = sqrt(gap_with_colors$pop[keepers]/pi)/1500,
+       bg = gap_with_colors$cc[keepers])
   
 ## Max value 
   # Total values (accumulators)
-  df %>% select(starts_with('total')) %>% colnames()
+df %>% select(starts_with('total')) %>% colnames()
   # [1] "total_cases"              "total_deaths"             "total_cases_per_million" 
   # [4] "total_deaths_per_million" "total_tests"              "total_tests_per_thousand"
  
 ## Sum (smoothed new reported values contain no irregularity)
-   df %>% select(!starts_with('new')) %>%
-     colnames()
+df %>% select(!starts_with('new')) %>% colnames()
    # [1] "new_cases_smoothed"  "new_deaths_smoothed" "new_tests_smoothed" 
-
-
 
 
 p <- df %>% filter(iso_code == 'ESP') %>% ggplot(aes(x = date)) +
   geom_point(aes(text = paste("Country:", location)), size = 4) +
-  geom_smooth(aes(colour = vars(), fill = vars()) +
+  geom_smooth(aes(colour = vars(), fill = vars())) +
   facet_grid(cols= vars(df))
+
+  
+  
 
