@@ -6,11 +6,9 @@ library(dplyr)
 library(tidyr)
 
 #' TODO
-#' https://exchangeratesapi.io/
-#' try query conversion from api
-#' different currency
 #' residual analysis
-  
+#' different currency
+
 load(file="/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/output/joined_data_by_isocode.RData")
 
 # c <- read.csv("./data/USD_SGD_Historical_Data_investingDotCom.csv",header=T)
@@ -119,7 +117,16 @@ par(mfrow = c(2, 2))
 plot(newcases_model_original)
 
 
-#' Polynomial regression, 2nd degree
+# Make a histogram of the residuals
+# https://www.rpubs.com/stevenlsenior/normal_residuals_with_code
+qplot(newcases_model$residuals,
+            geom = "histogram",
+            bins = 10) +
+  labs(title = "Histogram of residuals",
+       x = "residual")
+
+
+#' Polynomial regression, 2nd degree / exponential? 
 #' try to improve the model a bit. seems a curvy line might fit better
 #' with outliers
 poly_model <- lm(usd2twd ~ poly(new_cases, 2, raw = TRUE), data = train.data.original)
@@ -162,6 +169,9 @@ par(mfrow = c(2, 2))
 plot(multiple.regression)
 
 
+#' discuss other variable options
+usa_selected2 <- usa %>% select(icu_patients , new_cases, new_deaths, new_tests)
+plot(usa_selected2)
 
 
 #' IGNORE THE BELOW
