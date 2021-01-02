@@ -68,6 +68,7 @@ training.samples <- usa_shuffled$usd2twd %>%
 train.data  <- usa[training.samples, ]
 test.data <- usa[-training.samples, ]
 
+set.seed(567)
 # for time series, shuffle before splitting
 idx_shuffled_o <- sample(nrow(usa_original))
 usa_shuffled_o <- usa_original[idx_shuffled_o,] 
@@ -75,8 +76,8 @@ usa_shuffled_o <- usa_original[idx_shuffled_o,]
 training.samples.original <- usa_shuffled_o$usd2twd %>%
   createDataPartition(p = 0.8, list = FALSE)
 
-train.data.original  <- usa[training.samples.original, ]
-test.data.original <- usa[-training.samples.original, ]
+train.data.original  <- usa_original[training.samples.original, ]
+test.data.original <- usa_original[-training.samples.original, ]
   
 #' linear regression starts here
 #' http://www.sthda.com/english/articles/40-regression-analysis/162-nonlinear-regression-essentials-in-r-polynomial-and-spline-regression-models/#polynomial-regression
@@ -99,13 +100,13 @@ summary(newcases_model)
 plot(usa$new_cases, usa$usd2twd, main="excluding daily cases over 100k")
 abline(newcases_model, col="blue")
 
+summary(newcases_model_original)
 plot(usa_original$new_cases, usa_original$usd2twd,main="including daily cases over 100k")
 abline(newcases_model_original, col="blue")
 
 par(mfrow = c(2, 1))
 
-
-ggplot(train.data, aes(new_cases, usd2twd) ) +
+ggplot(train.data.original, aes(new_cases, usd2twd) ) +
   geom_point() +
   stat_smooth(method = lm, formula = y ~ x)
 
@@ -130,7 +131,6 @@ data.frame(
 
 summary(poly_model)
 
-#' it's almost a straight line, so no need? 
 ggplot(train.data.original, aes(new_cases, usd2twd) ) +
   geom_point() +
   stat_smooth(method = lm, formula = y ~ poly(x, 2, raw = TRUE))
