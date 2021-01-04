@@ -1,0 +1,32 @@
+{
+    "id": "A004113E",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1609646417821.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "expression": "usa_tuned",
+        "caption": "usa_tuned",
+        "totalObservations": 89,
+        "displayedObservations": 89,
+        "variables": 61,
+        "cacheKey": "53D3E375",
+        "object": "usa_tuned",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=usa_tuned&cache_key=53D3E375&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 13855187315077172,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1609646417821,
+    "read_only": false,
+    "read_only_alternatives": []
+}

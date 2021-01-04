@@ -1,0 +1,24 @@
+{
+    "id": "1B4E4DC7",
+    "path": "~/Desktop/MVTEC/mid-term/MVTEC-covid-test/script/spe_predictive_model_currency.R",
+    "project_path": "script/spe_predictive_model_currency.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1609681058181.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "cursorPosition": "284,139",
+        "scrollLine": "257"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1609693920,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1609693920078,
+    "read_only": false,
+    "read_only_alternatives": []
+}

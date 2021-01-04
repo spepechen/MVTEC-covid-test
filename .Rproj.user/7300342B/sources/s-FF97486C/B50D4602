@@ -1,0 +1,32 @@
+{
+    "id": "B50D4602",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1609691905337.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "expression": "currency",
+        "caption": "currency",
+        "totalObservations": 367,
+        "displayedObservations": 367,
+        "variables": 3,
+        "cacheKey": "EB62B608",
+        "object": "currency",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=currency&cache_key=EB62B608&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 140193025310080,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1609691905337,
+    "read_only": false,
+    "read_only_alternatives": []
+}

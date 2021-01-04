@@ -1,0 +1,32 @@
+{
+    "id": "47DC2520",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1609642936200.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "expression": "usa",
+        "caption": "usa",
+        "totalObservations": "69",
+        "displayedObservations": "69",
+        "variables": "59",
+        "cacheKey": "25F4BF4A",
+        "object": "usa",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=usa&cache_key=25F4BF4A&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7669474516369678368,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1609642936200,
+    "read_only": false,
+    "read_only_alternatives": []
+}
