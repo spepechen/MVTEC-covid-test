@@ -3,195 +3,213 @@ knitr::opts_chunk$set(collapse = TRUE)
 
 #+ message=FALSE
 library(dplyr)
-library(tidyr)
+library(tidyverse)
+library(caret)
 
 #' TODO
 #' residual analysis
 #' different currency
 
-load(file="/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/output/joined_data_by_isocode.RData")
+# load(file="/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/output/joined_data_by_isocode.RData")
 
-# c <- read.csv("./data/USD_SGD_Historical_Data_investingDotCom.csv",header=T)
-
-c <- read.csv("./data/USD_TWD_Historical_Data.csv",header=T)
+#' ## Preprocessing
 
 df <- read.csv("./data/owid-covid-data-new.csv",header=T)
 
 df$date <- as.Date(df$date, format='%Y-%m-%d')
 
-
-#' Missing values in currency is filled with the previous date's price
-
-c$date <- as.Date(c$Date, format='%b %d, %Y')
-
-currency <- c %>% 
-  select(Price, date) %>%
-  complete(date = seq(min(date), max(date), by = "day"),
-           fill = list(price = NA)) %>%
-  fill(Price) %>%
-  rename(usd2twd = Price)
-
-# usa <- joined %>% 
-#   filter(iso_code == 'USA') %>%
-#   merge(currency, by='date')
-
-usa_original <- df %>% 
+usa <- df %>% 
   filter(iso_code == 'USA') %>%
-  merge(currency, by='date') %>% 
-  filter(date > "2020-02-29") %>% #starts with March
-  filter(!is.na(stringency_index)) 
+  mutate(yest_new_deaths = lag(new_deaths), 
+         yest_new_cases = lag(new_cases),
+         yest_icu_patients = lag(icu_patients),
+         yest_hosp_patients = lag(hosp_patients),
+         yest_new_cases_smoothed = lag(new_cases_smoothed),
+         yest_new_deaths_smoothed = lag(new_deaths_smoothed), 
+         yest_icu_patients_per_million = lag(icu_patients_per_million),
+         yest_hosp_patients_per_million = lag(hosp_patients_per_million),
+         yest_new_tests_smoothed_per_thousand = lag(new_tests_smoothed_per_thousand)) %>%
+  filter(date > "2020-09-30") #starts with March
 
-# remove outliers
-usa <- usa_original %>% 
-  filter(new_cases < 100000) 
+# excluding outliers after residul analysis 
+# #57,58 Thanksgiving
+# #64, #65, #66 Dec 3-5
+# 85 Chirstmas eve, 86, Christmas, 87 the day after Christmas
+usa_tuned <- usa[-c(85, 86, 87, 64, 65, 66, 57, 58),] 
 
-#' quick test for outliers
-usa_outliers <- usa_original %>%  filter(new_cases > 100000) 
-outlier_fit <- lm(usd2twd ~ new_cases, data = usa_outliers ) # fit the model
-summary(outlier_fit)
-plot(usa_outliers$new_cases, usa_outliers$usd2twd, main="daily cases over 100k only")
-abline(outlier_fit, col="blue")
 
-#' Data partitioning
+hist(usa$new_deaths_smoothed)
+
+usa %>% 
+  select(date, new_deaths, yest_new_deaths)
+  
+#' ## Data partitioning
 #' split training and testing data set
-set.seed(123)
+set.seed(222)
 
 # for time series, shuffle before splitting
 idx_shuffled <- sample(nrow(usa))
 usa_shuffled <- usa[idx_shuffled,] 
 
-training.samples <- usa_shuffled$usd2twd %>%
+training.samples <- usa_shuffled$new_deaths %>%
   createDataPartition(p = 0.8, list = FALSE)
 
 train.data  <- usa[training.samples, ]
 test.data <- usa[-training.samples, ]
 
-set.seed(567)
+# usa_tuned
 # for time series, shuffle before splitting
-idx_shuffled_o <- sample(nrow(usa_original))
-usa_shuffled_o <- usa_original[idx_shuffled_o,] 
+idx_shuffled_t <- sample(nrow(usa_tuned))
+usa_shuffled_t <- usa_tuned[idx_shuffled_t,] 
 
-training.samples.original <- usa_shuffled_o$usd2twd %>%
+training.samples.t <- usa_shuffled_t$new_deaths %>%
   createDataPartition(p = 0.8, list = FALSE)
 
-train.data.original  <- usa_original[training.samples.original, ]
-test.data.original <- usa_original[-training.samples.original, ]
-  
-#' linear regression starts here
+train.data.tuned  <- usa[training.samples.t, ]
+test.data.tuned <- usa[-training.samples.t, ]
+
+#' ## Linear regression starts here
 #' http://www.sthda.com/english/articles/40-regression-analysis/162-nonlinear-regression-essentials-in-r-polynomial-and-spline-regression-models/#polynomial-regression
+#' plot the data out to check linearity
+#' besides new_cases, other variables' relationship with stringency_index & tests are not obvious.  
+#' so decided to drop it.
+usa_selected <- usa %>% select(new_cases_smoothed, new_deaths_smoothed, icu_patients_per_million, 
+                               new_tests_smoothed_per_thousand, hosp_patients_per_million, stringency_index)
+plot(usa_selected)
+
+# a few non linear trends, decided not to use it
+usa_selected2 <- usa_sinceMar %>% select(new_cases, new_deaths, icu_patients, new_tests, hosp_patients, stringency_index)
+plot(usa_selected2)
+
+#' ### Start with the most obvious trends
 # Build the model
-newcases_model <- lm(usd2twd ~ new_cases, data = train.data ) # fit the model
-newcases_model_original <- lm(usd2twd ~ new_cases, data = usa_original ) # fit the model
+deaths.model <- lm(new_deaths_smoothed ~ yest_icu_patients_per_million, data = train.data ) # fit the model
+summary(deaths.model)
 
-# Make predictions
-newcases_predictions <- newcases_model %>% predict(test.data)
-# Model performance
-# we want low RMSE and high R2
-# 0.329 RMSE seems low enough but put in the context of the currency conversion usd2twd... then it might not be?
-data.frame(
-  RMSE = RMSE(newcases_predictions, test.data$usd2twd),
-  R2 = R2(newcases_predictions, test.data$usd2twd)
-)
+par(mfrow = c(1, 1))
+plot(usa$yest_icu_patients_per_million, usa$new_deaths_smoothed)
+abline(deaths.model, col="blue")
 
-#' Comparing models with or without outliers
-summary(newcases_model)
-plot(usa$new_cases, usa$usd2twd, main="excluding daily cases over 100k")
-abline(newcases_model, col="blue")
 
-summary(newcases_model_original)
-plot(usa_original$new_cases, usa_original$usd2twd,main="including daily cases over 100k")
-abline(newcases_model_original, col="blue")
-
-par(mfrow = c(2, 1))
-
-ggplot(train.data.original, aes(new_cases, usd2twd) ) +
-  geom_point() +
-  stat_smooth(method = lm, formula = y ~ x)
+#' the model is influenced by a few outliers 
 
 #' ## Residual analysis
+#'✖️ linearity,  🔺normality
 par(mfrow = c(2, 2))
-plot(newcases_model)
-
-#a few outliers
-par(mfrow = c(2, 2))
-plot(newcases_model_original)
-
+plot(deaths.model)
 
 # Make a histogram of the residuals
 # https://www.rpubs.com/stevenlsenior/normal_residuals_with_code
-qplot(newcases_model$residuals,
+qplot(deaths.model$residuals,
             geom = "histogram",
             bins = 10) +
   labs(title = "Histogram of residuals",
        x = "residual")
 
 
-#' Polynomial regression, 2nd degree / exponential? 
-#' try to improve the model a bit. seems a curvy line might fit better
-#' with outliers
-poly_model <- lm(usd2twd ~ poly(new_cases, 2, raw = TRUE), data = train.data.original)
-poly_predictions <- poly_model %>% predict(test.data.original)
-data.frame(
-  RMSE = RMSE(poly_predictions, test.data.original$usd2twd),
-  R2 = R2(poly_predictions, test.data.original$usd2twd)
-)
-
-summary(poly_model)
-
-ggplot(train.data.original, aes(new_cases, usd2twd) ) +
-  geom_point() +
-  stat_smooth(method = lm, formula = y ~ poly(x, 2, raw = TRUE))
-
-
-ggplot(usa_original, aes(new_cases, usd2twd) ) +
-  geom_point() +
-  stat_smooth(method = lm, formula = y ~ poly(x, 2, raw = TRUE))
-
-
-par(mfrow = c(2, 2))
-plot(poly_model)
-
-
 #' ## Multiple Regression
 #' try add new var and do multiple reg
-usa_selected <- usa %>% select(usd2twd, new_cases, new_deaths)
+#' first attempt
+
+usa_selected <- usa %>%
+select(new_deaths_smoothed,
+       yest_new_deaths_smoothed,
+       yest_icu_patients_per_million, 
+       yest_new_cases_smoothed, 
+       yest_new_tests_smoothed_per_thousand, #🚫
+       yest_hosp_patients_per_million)
 plot(usa_selected)
+
+
 # fit the model
-multiple.regression <- lm(usd2twd ~ new_cases + new_deaths, data = train.data) 
-multi_predictions <- multiple.regression %>% predict(test.data)
+# remove yest_hosp_patients
+.multiple.regression.test <- lm(new_deaths_smoothed ~ 
+                            yest_new_deaths_smoothed
+                          + yest_icu_patients_per_million 
+                          + yest_new_cases_smoothed 
+                          + yest_hosp_patients, #🚫 #drop cuz p value > 0.05
+                          data = train.data.tuned) 
+summary(.multiple.regression.test)
+
+multiple.regression <- lm(new_deaths_smoothed ~ 
+                            yest_new_deaths_smoothed
+                          + yest_icu_patients_per_million,
+                          data = train.data) 
 summary(multiple.regression)
+
+multi_predictions <- multiple.regression %>% predict(test.data)
+# ✅️ validation 
 data.frame(
-  RMSE = RMSE(multi_predictions, test.data$usd2twd),
-  R2 = R2(multi_predictions, test.data$usd2twd)
+  RMSE = RMSE(multi_predictions, test.data$new_deaths_smoothed),
+  R2 = R2(multi_predictions, test.data$new_deaths_smoothed)
 )
 
+# Residual analysis
+# https://data.library.virginia.edu/diagnostic-plots/
+# https://www.youtube.com/watch?v=E27HcS9QaT0
+# 🔺 linearity,  ✖ normality
 par(mfrow = c(2, 2))
 plot(multiple.regression)
 
 
-#' discuss other variable options
-usa_selected2 <- usa %>% select(icu_patients , new_cases, new_deaths, new_tests)
-plot(usa_selected2)
+qplot(multiple.regression$residuals,
+      geom = "histogram",
+      bins = 10) +
+  labs(title = "Histogram of residuals",
+       x = "residual")
 
 
-#' IGNORE THE BELOW
-#' results are not meaningful
-newdeaths_fit <- lm(usd2twd ~ new_deaths, data = usa) # fit the model
-summary(newdeaths_fit)
-plot(usa$new_deaths, usa$usd2twd)
-abline(newdeaths_fit, col="blue")
+#' Improving the model with tuned data
+#' It fails the normality test still but improves in leverage and resi/fitted
+#' Conclusion liner models might not be the best fit tho
+#' But we will take it for now and move on 
+multiple.regression.tuned <- lm(new_deaths_smoothed ~ 
+                            yest_new_deaths_smoothed
+                          + yest_icu_patients_per_million,
+                          data = usa_tuned) 
+summary(multiple.regression.tuned)
 
-stringency_index_fit <- lm(usd2twd ~ stringency_index, data = usa) # fit the model
-summary(stringency_index_fit)
-plot(usa$stringency_index, usa$usd2twd)
-abline(stringency_index_fit, col="blue")
+multi_predictions_tuned <- multiple.regression.tuned %>% predict(test.data.tuned)
+# ✅️ validation 
+# http://www.sthda.com/english/articles/40-regression-analysis/162-nonlinear-regression-essentials-in-r-polynomial-and-spline-regression-models/
+data.frame(
+  RMSE = RMSE(multi_predictions_tuned, test.data.tuned$new_deaths_smoothed),
+  R2 = R2(multi_predictions_tuned, test.data.tuned$new_deaths_smoothed)
+)
 
-#' try add new var and do multiple reg
-usa_selected <- usa %>% select(usd2twd, new_cases, stringency_index)
-plot(usa_selected)
+# Residual analysis
+# 🔺 linearity,  ✖ normality
+par(mfrow = c(2, 2))
+plot(multiple.regression.tuned)
 
-usa_selected <- usa %>% select(usd2twd, new_cases, new_deaths)
-plot(usa_selected)
 
-multiple.regression <- lm(usd2twd ~ new_cases + new_deaths, data = usa) # fit the model
-summary(multiple.regression)
+usa_tunded_selected <- usa_tuned %>% select(new_deaths_smoothed, 
+                                         yest_new_deaths_smoothed,
+                                         yest_icu_patients_per_million)
+plot(usa_tunded_selected)
+
+
+#' # add predicted values back to df
+#' add to the full data set so we will have full time series
+intercept <- summary(multiple.regression.tuned)$coefficients[1]
+coeff_yest_new_deaths_smoothed <- summary(multiple.regression.tuned)$coefficients[2]
+coeff_yest_icu_patients_per_million <- summary(multiple.regression.tuned)$coefficients[3]
+
+usa$predicted_new_deaths_smoothed <- usa$yest_new_deaths_smoothed * coeff_yest_new_deaths_smoothed  + usa$yest_icu_patients_per_million * coeff_yest_icu_patients_per_million + intercept
+usa$deaths_variance <- usa$predicted_new_deaths_smoothed - usa$new_deaths_smoothed
+usa$deaths_variance_pct <- usa$deaths_variance/usa$new_deaths_smoothed
+
+result <- usa %>% select(date, new_deaths_smoothed, predicted_new_deaths_smoothed, deaths_variance, deaths_variance_pct) %>%
+        mutate(across(deaths_variance_pct, round, 3)) %>%
+        mutate("deaths_variance_%" = deaths_variance_pct * 100) %>%
+        mutate(across(deaths_variance, round, 0)) 
+        
+result4plot <- result %>% select(date, new_deaths_smoothed, predicted_new_deaths_smoothed)
+
+long <- reshape2::melt(result4plot, id.vars = "date")
+ggplot(long, aes(x = date, y = value, 
+                 group = variable, colour = variable)) +
+  geom_line() +
+  scale_y_log10() 
+
+write.csv( result , "/Users/spechen/Desktop/MVTEC/mid-term/MVTEC-covid-test/output/for_d3/usa_prediction.csv", row.names = FALSE)
